@@ -32,7 +32,7 @@ function askQuestion() {
 }
 
 function gradeQuiz(candidateAnswers) {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < correctAnswers.length; i++) {
     console.log(`Question ${i+1} - You answered ${candidateAnswers[i]}. The correct answer is ${correctAnswers[i]}`);
   }
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
@@ -44,11 +44,12 @@ function gradeQuiz(candidateAnswers) {
 
 
   let grade = 0;  //TODO 3.2 use this variable to calculate the candidates score.
-  for (let j = 0; j < 5; j++) {
+  for (let j = 0; j < correctAnswers.length; j++) {
     if (candidateAnswers[j].toLowerCase() === correctAnswers[j].toLowerCase()) {
       grade += 20
     }
   }
+
 
   return grade;
 }
@@ -58,7 +59,13 @@ function runProgram() {
   // TODO 1.1c: Greet candidate using their name //
    console.log("STOP! " + candidateName + ", to cross the Bridge of Death, you must answer me these questions... five... ere the other side you see.");
   askQuestion();
-  gradeQuiz(this.candidateAnswers);
+  let finalGrade = gradeQuiz(this.candidateAnswers)
+    if (finalGrade >= 80) {
+      console.log(`You got ${finalGrade}% of the questions correct. You passed! :D`);
+    } else {
+      console.log(`You got ${finalGrade}% of the questions correct. You failed :,(((`);
+    }
+
 }
 
 // ----------- Don't write any code or change any code below this line ---------- //
