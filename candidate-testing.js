@@ -33,7 +33,7 @@ function askQuestion() {
 
 function gradeQuiz(candidateAnswers) {
   for (let i = 0; i < 5; i++) {
-console.log(`Question ${i+1} - You answered ${candidateAnswers[i]}. The correct answer is ${correctAnswers[i]}`);
+    console.log(`Question ${i+1} - You answered ${candidateAnswers[i]}. The correct answer is ${correctAnswers[i]}`);
   }
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 // if (askQuestion() == correctAnswers) {
@@ -43,8 +43,12 @@ console.log(`Question ${i+1} - You answered ${candidateAnswers[i]}. The correct 
 // }
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+  let grade = 0;  //TODO 3.2 use this variable to calculate the candidates score.
+  for (let j = 0; j < 5; j++) {
+    if (candidateAnswers[j].toLowerCase() === correctAnswers[j].toLowerCase()) {
+      grade += 20
+    }
+  }
 
   return grade;
 }
